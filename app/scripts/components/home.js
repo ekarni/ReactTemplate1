@@ -17,7 +17,7 @@ var TimerExample = React.createClass({
     },
 
     tick: function(){
-      if (this.state.elapsed > 2000) {
+      if (this.state.elapsed > 10000) {
         this.setState({elapsed: 0});
         this.setState({startTime: Date.now()});
       };
