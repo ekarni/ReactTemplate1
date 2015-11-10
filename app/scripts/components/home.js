@@ -3,22 +3,25 @@ var TimerExample = React.createClass({
 
     getInitialState: function(){
 
-        return { elapsed: 0 };
+      return { elapsed: 0 ,startTime: Date.now()};
     },
 
     componentDidMount: function(){
 
-        this.timer = setInterval(this.tick, 50);
+      this.timer = setInterval(this.tick, 50);
     },
 
     componentWillUnmount: function(){
 
-        clearInterval(this.timer);
+      clearInterval(this.timer);
     },
 
     tick: function(){
-
-        this.setState({elapsed: new Date() - this.props.start});
+      if (this.state.elapsed > 2000) {
+        this.setState({elapsed: 0});
+        this.setState({startTime: Date.now()});
+      };
+      this.setState({elapsed: new Date() - this.state.startTime});
     },
 
     render: function() {
