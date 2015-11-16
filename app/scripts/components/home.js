@@ -21,8 +21,13 @@ var TimerExample = React.createClass({
     },
 
     resetCount: function(){
+      //Resets the clock to 0
       this.setState({elapsed: 0});
       this.setState({startTime: Date.now()});
+
+      //Shows notification of last reset
+
+
     },
 
     render: function() {
@@ -33,12 +38,30 @@ var TimerExample = React.createClass({
         return <div className="hero-unit">
           <p>
             This example was started <b>{seconds} seconds</b> ago.
-            <button onClick={this.resetCount}>Rest</button>
           </p>
         </div>
     }
 });
 
+var resetButton = React.createClass({
+
+    resetCount: function(){
+    //Resets the clock to 0
+    this.setState({elapsed: 0});
+    this.setState({startTime: Date.now()});
+
+    //Shows notification of last reset
+      
+  },
+
+  render: function() {
+
+    return <div>
+    <button onClick={this.resetCount}>Rest</button>
+    </div>
+
+  }
+})
 
 React.render(
     <TimerExample start={Date.now()} />,
