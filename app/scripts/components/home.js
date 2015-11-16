@@ -43,12 +43,12 @@ var TimerExample = React.createClass({
     }
 });
 
-var resetButton = React.createClass({
+var ResetButton = React.createClass({
 
-    resetCount: function(){
+  resetCount: function(){
     //Resets the clock to 0
-    this.setState({elapsed: 0});
-    this.setState({startTime: Date.now()});
+    this.prop.elapsed.setState({elapsed: 0});
+    this.prop.startTime.setState({startTime: Date.now()});
 
     //Shows notification of last reset
       
@@ -57,13 +57,17 @@ var resetButton = React.createClass({
   render: function() {
 
     return <div>
-    <button onClick={this.resetCount}>Rest</button>
+      <button onClick={this.resetCount}>Rest</button>
     </div>
 
   }
 })
+React.render(
+  <ResetButton />, 
+  document.getElementById('appButton')
+);
 
 React.render(
     <TimerExample start={Date.now()} />,
-    document.body
+    document.getElementById('app')
 );
