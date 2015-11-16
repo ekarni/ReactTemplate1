@@ -17,11 +17,12 @@ var TimerExample = React.createClass({
     },
 
     tick: function(){
-      if (this.state.elapsed > 10000) {
-        this.setState({elapsed: 0});
-        this.setState({startTime: Date.now()});
-      };
       this.setState({elapsed: new Date() - this.state.startTime});
+    },
+
+    resetCount: function(){
+      this.setState({elapsed: 0});
+      this.setState({startTime: Date.now()});
     },
 
     render: function() {
@@ -30,7 +31,10 @@ var TimerExample = React.createClass({
         var seconds = (elapsed / 10).toFixed(1);    
 
         return <div className="hero-unit">
-        <p>This example was started <b>{seconds} seconds</b> ago.</p>
+          <p>
+            This example was started <b>{seconds} seconds</b> ago.
+            <button onClick={this.resetCount}>Rest</button>
+          </p>
         </div>
     }
 });
